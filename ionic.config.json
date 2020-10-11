@@ -1,0 +1,7 @@
+{
+  "name": "client-incicencias",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
