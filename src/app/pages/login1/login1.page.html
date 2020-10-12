@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="user.rut"  placeholder="Rut"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="password" [(ngModel)]="user.password"  placeholder="Contraseña"></ion-input>
+  </ion-item>
+
+  <div class="buttons" padding>
+    <ion-button  (click)="login(user)" expand="block">Iniciar Sesión</ion-button>
+  </div>
+</ion-content>
