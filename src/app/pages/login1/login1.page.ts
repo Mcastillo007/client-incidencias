@@ -15,7 +15,7 @@ export class Login1Page implements OnInit {
   }
 
  async login(user: any){
-  console.log(user);
+  //console.log(user);
   try{
     let userAux: any = await this.authService.login(user);
     localStorage.setItem('token', userAux.token);

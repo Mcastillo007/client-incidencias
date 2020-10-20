@@ -2,11 +2,10 @@
 
 <ion-content>
   <ion-list>
-    
     <ion-item *ngFor="let problem of problems">
       <ion-label>
-        <h2>{{problem.description}}</h2>
-        <h2>{{problem.user_create}}</h2>
+        <h2>{{problem.user_create.name}}</h2>
+        <IonButton color="danger"><ion-icon name="trash"></ion-icon></IonButton>
       </ion-label>
     </ion-item>
   </ion-list>

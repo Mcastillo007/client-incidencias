@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
 
-  baseApiURL: string = "http://192.168.18.22:3977" + "/api/";
+  baseApiURL: string = "http://localhost:3977" + "/api/";
 
   constructor(private http: HttpClient) {
 
