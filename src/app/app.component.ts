@@ -43,9 +43,9 @@ export class AppComponent implements OnInit {
       icon: 'people'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'CATEGORIAS',
+      url: '/categories',
+      icon: 'filing'
     }
    
   ];

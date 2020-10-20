@@ -4,10 +4,27 @@
   <ion-list>
     
     <ion-item *ngFor="let subcategory of subcategories">
-      <ion-label>
-        <h2>{{subcategory.name}}</h2>
-        <h2>{{subcategory.category.name}}</h2>
-      </ion-label>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{subcategory.name}}</ion-card-subtitle>
+          <h3>Categoría</h3>
+          <ion-card-subtitle>{{subcategory.category.name}}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <h3>Descripción:</h3>
+          {{subcategory.description}}
+        </ion-card-content>
+        <ion-card-content>
+          <h2>
+            Opciones:
+            <ion-button class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+            <ion-button class="ion-float-center" color="secondary"><ion-icon name="create"></ion-icon></ion-button>
+          </h2>
+          
+        </ion-card-content>
+    
+      </ion-card>
     </ion-item>
   </ion-list>
 </ion-content>

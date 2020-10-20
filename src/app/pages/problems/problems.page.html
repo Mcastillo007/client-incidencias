@@ -3,10 +3,23 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let problem of problems">
-      <ion-label>
-        <h2>{{problem.user_create.name}}</h2>
-        <IonButton color="danger"><ion-icon name="trash"></ion-icon></IonButton>
-      </ion-label>
+
+      <ion-card>
+        <ion-card-content> 
+          <ion-datetime displayFormat="DD-MMM-YYYY-HH:mm" disabled value={{problem.date_create}}></ion-datetime> 
+        </ion-card-content> 
+        <ion-card-header>
+          <ion-card-subtitle>Alumno: {{problem.user_create.name}}  {{problem.user_create.surname}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>Rut: {{problem.user_create.rut}}</ion-card-content>
+        
+        <ion-card-content>
+          Opciones:
+          <ion-button class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button class="ion-float-center" color="secondary"><ion-icon name="eye"></ion-icon></ion-button>
+        
+        </ion-card-content>
+      </ion-card>
     </ion-item>
   </ion-list>
 </ion-content>
