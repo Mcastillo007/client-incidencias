@@ -10,11 +10,11 @@ export class UserService {
   constructor(private apiService: ApiService) { }
 
   getAll(){
-    return this.apiService.get('subjects', null);
+    return this.apiService.get('users', null);
   }
 
   getById(id: String){
-    return this. apiService.get('subject/'+id, null);
+    return this. apiService.get('user/'+id, null);
   }
 
 }

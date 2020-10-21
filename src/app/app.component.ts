@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     {
       title: 'SUBCATEGORIAS',
       url: '/subcategories',
-      icon: 'filing'
+      icon: 'file-tray'
     },
     {
       title: 'RAMOS',
@@ -45,7 +45,12 @@ export class AppComponent implements OnInit {
     {
       title: 'CATEGORIAS',
       url: '/categories',
-      icon: 'filing'
+      icon: 'albums'
+    },
+    {
+      title: 'HOME',
+      url: '/home',
+      icon: 'home'
     }
    
   ];

@@ -15,6 +15,12 @@
         <ion-card-header>
           <ion-card-subtitle>Alumno: {{problem.user_create.name}}  {{problem.user_create.surname}}</ion-card-subtitle>
         </ion-card-header>
+        <ion-card-content>
+          Estado:
+          <ion-col *ngIf="problem?.state == 'unactive'"><ion-icon name="radio-button-on-outline" color="danger"></ion-icon></ion-col>
+          <ion-col *ngIf="problem?.state == 'active'"><ion-icon name="radio-button-on-outline" color="success"></ion-icon></ion-col>
+        </ion-card-content>
+        
         <ion-card-content>Rut: {{problem.user_create.rut}}</ion-card-content>
         
         <ion-card-content>
