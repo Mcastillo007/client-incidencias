@@ -5,13 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list class="opa">
     <ion-item *ngFor="let problem of problems">
-
       <ion-card>
-        <ion-card-content> 
+        <ion-card-title> 
           <ion-datetime displayFormat="DD-MMM-YYYY-HH:mm" disabled value={{problem.date_create}}></ion-datetime> 
-        </ion-card-content> 
+        </ion-card-title> 
         <ion-card-header>
           <ion-card-subtitle>Alumno: {{problem.user_create.name}}  {{problem.user_create.surname}}</ion-card-subtitle>
         </ion-card-header>

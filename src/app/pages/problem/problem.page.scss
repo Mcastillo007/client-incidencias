@@ -10,4 +10,18 @@
     border-radius: 20px;
     text-align: center;
     align-items: center;
+    ion-float: center;
+}
+.opa {
+    opacity: 0.85;
+}
+ion-content{
+    --background: #fff url('../../../assets/images/fondo_ucm.jpg') no-repeat center center / cover;
+}
+.center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
