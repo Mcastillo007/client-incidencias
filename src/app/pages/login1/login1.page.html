@@ -4,16 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
-  <ion-item>
-    <ion-input type="text" [(ngModel)]="user.rut"  placeholder="Rut"></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-input type="password" [(ngModel)]="user.password"  placeholder="Contraseña"></ion-input>
-  </ion-item>
+  <ion-card class="opa">
+    <ion-card-content>
+      <ion-input type="text" [(ngModel)]="user.rut"  placeholder="Rut"></ion-input>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-input type="password" [(ngModel)]="user.password"  placeholder="Contraseña"></ion-input>
+    </ion-card-content>
+    <ion-card-content >
+      <ion-button  (click)="login(user)" expand="block" class="color-deg" style="text-align: center;" shape="round" fill="outline" style="color: whitesmoke;">Iniciar Sesión</ion-button>
+    </ion-card-content>
 
-  <div class="buttons" padding>
-    <ion-button  (click)="login(user)" expand="block">Iniciar Sesión</ion-button>
-  </div>
+  </ion-card>
 </ion-content>
+
