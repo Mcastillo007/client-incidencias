@@ -9,6 +9,7 @@ export class ApiService {
 
   baseApiURL: string = "http://localhost:3977" + "/api/";
 
+
   constructor(private http: HttpClient) {
 
   }
@@ -21,7 +22,12 @@ export class ApiService {
   }
 
   post(url: string, obj: any) {
-    return this.http.post(this.baseApiURL + url, this.setHeaders(obj)).toPromise();
+    console.log(obj);
+    return this.http.post(this.baseApiURL + url,  obj, this.getPostHeaders()).toPromise();
+  }
+  delete(url: string, obj:any) {
+    console.log(obj);
+    return this.http.delete(this.baseApiURL + url, this.getPostHeaders()).toPromise();
   }
 
 
@@ -32,16 +38,17 @@ export class ApiService {
     headers.append('Content-Type', 'application/json');
 
 
-    /* const accessToken = this.localStorageService.get('token');*/
+   
     let reqData: any;
     reqData = {
       headers: headers,
     };
-    /*
+  
     if (null != localStorage.getItem('token')) {
-      reqData.token = JSON.parse(localStorage.getItem('token')).access_token;
-    }*/
-
+      console.log(localStorage.getItem('token'));
+      headers.append('Authorization','"'+ localStorage.getItem('token')+'"');
+      reqData.Authorization = localStorage.getItem('token');
+    }
 
     if (params) {
 
@@ -51,6 +58,17 @@ export class ApiService {
 
     }
     return reqData;
+  }
+
+  private getPostHeaders(): {} {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    };
+    console.log(httpOptions);
+    return httpOptions;
   }
 
 }

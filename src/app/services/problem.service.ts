@@ -17,6 +17,10 @@ export class ProblemService {
     return this.apiService.get('problem/'+id, null);
   }
 
+  reply(answer: any){
+    return this.apiService.post('answers', answer);
+  }
+
 }
 
 

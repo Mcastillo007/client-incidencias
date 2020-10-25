@@ -26,7 +26,7 @@ export class Login1Page implements OnInit {
     console.log(userAux);
   }
   catch(ex){
-    console.log(ex.error.message);
+    console.log(ex);
   }
   
   
