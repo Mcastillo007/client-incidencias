@@ -2,9 +2,9 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button color="dark" (click)="closeModal()">
-          <ion-icon name="arrow-back"></ion-icon>
-        </ion-button>
-  </ion-buttons>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Ver categoría.</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input  formControlName="name" type="text" ></ion-input>
+      <ion-input formControlName="name" type="text" ></ion-input>
     </ion-item>
 
     <ion-item lines="full">
@@ -26,7 +26,7 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Fecha creación</ion-label>
-      <ion-input formControlName="date" type="text"></ion-input>
+      <ion-datetime displayFormat="DD-MMM-YYYY-HH:mm" disabled value={{category.date}}></ion-datetime> 
     </ion-item>
 
     <ion-row>
@@ -36,4 +36,3 @@
     </ion-row>
   </form>
 </ion-content>
-   

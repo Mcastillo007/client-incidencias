@@ -14,14 +14,15 @@ export class UpdatecategoryComponent implements OnInit {
   categoryForm: FormGroup;
   isSubmitted = false;
 
-  constructor(private apiService: ApiService,
-              private modalController: ModalController,
-              private formBuilder: FormBuilder,
-              private navParams: NavParams) {
-              
-              this.category = navParams.get('category');
-              console.log(this.category._id);
-    this.categoryForm = new FormGroup({
+  constructor(
+    private apiService: ApiService,
+    private modalController: ModalController,
+    private formBuilder: FormBuilder,
+    private navParams: NavParams) {
+
+      this.category = navParams.get('category');
+      console.log(this.category._id);
+      this.categoryForm = new FormGroup({
       '_id': new FormControl(this.category._id),
       'name': new FormControl(this.category.name),
       'description': new FormControl(this.category.description, [Validators.required])
@@ -39,7 +40,7 @@ export class UpdatecategoryComponent implements OnInit {
       return false;
     } else {
       let category = this.categoryForm.value;
-        
+
       this.apiService.post('category/'+category._id, category).then(res => {
         this.modalController.dismiss();
       }).catch(res => {
