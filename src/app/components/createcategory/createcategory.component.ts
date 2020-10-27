@@ -34,7 +34,7 @@ export class CreatecategoryComponent implements OnInit {
   submitForm() {
     this.isSubmitted = true;
     if (!this.categoryForm.valid) {
-      console.log('Por favor complete correctamente todos los campos')
+      console.log('Por favor complete correctamente todos los campos');
       return false;
     } else {
       let category = this.categoryForm.value;

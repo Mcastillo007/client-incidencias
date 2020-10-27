@@ -23,9 +23,9 @@ export class ApiService {
 
   post(url: string, obj: any) {
     console.log(obj);
-    return this.http.post(this.baseApiURL + url,  obj, this.getPostHeaders()).toPromise();
+    return this.http.post(this.baseApiURL + url, obj, this.getPostHeaders()).toPromise();
   }
-  delete(url: string, obj:any) {
+  delete(url: string, obj: any) {
     console.log(obj);
     return this.http.delete(this.baseApiURL + url, this.getPostHeaders()).toPromise();
   }
@@ -38,15 +38,15 @@ export class ApiService {
     headers.append('Content-Type', 'application/json');
 
 
-   
+
     let reqData: any;
     reqData = {
       headers: headers,
     };
-  
+
     if (null != localStorage.getItem('token')) {
       console.log(localStorage.getItem('token'));
-      headers.append('Authorization','"'+ localStorage.getItem('token')+'"');
+      headers.append('Authorization', '"' + localStorage.getItem('token') + '"');
       reqData.Authorization = localStorage.getItem('token');
     }
 
@@ -63,7 +63,7 @@ export class ApiService {
   private getPostHeaders(): {} {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token')
       })
     };
