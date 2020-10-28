@@ -19,16 +19,14 @@ export class CategoryService {
   }
 
   create(category: any){
-    console.log("CAT SERVICE");
     console.log(category);
     return this.apiService.post('category', category);
   }
 
   delete(id: any){
-    return this.apiService.delete('category/' + id, null); 
+    return this.apiService.delete('category/' + id, null);
   }
 
-  
 
 
 }

@@ -5,7 +5,7 @@
           <ion-icon name="arrow-back"></ion-icon>
         </ion-button>
   </ion-buttons>
-    <ion-title>Crear categoría.</ion-title>
+    <ion-title>Crear Subcategoría.</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
@@ -15,14 +15,20 @@
       <ion-input  formControlName="name" type="text" ></ion-input>
     </ion-item>
 
+
     <ion-item lines="full">
       <ion-label position="floating">Descripción</ion-label>
       <ion-input formControlName="description" type="text"></ion-input>
     </ion-item>
 
+    <ion-item lines="full">
+      <ion-label position="floating">Categoria</ion-label>
+      <ion-input formControlName="category" type="text"></ion-input>
+    </ion-item>
+
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="success" expand="block">Crear categoría</ion-button>
+        <ion-button type="submit" color="success" expand="block">Añadir Subcategoría</ion-button>
       </ion-col>
     </ion-row>
   </form>

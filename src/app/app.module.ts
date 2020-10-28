@@ -12,10 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatecategoryComponent } from './components/createcategory/createcategory.component';
 import { UpdatecategoryComponent } from './components/updatecategory/updatecategory.component';
+import { CreatesubcategoryComponent } from './components/createsubcategory/createsubcategory.component';
 
 
 @NgModule({
-  declarations: [AppComponent, CreatecategoryComponent, UpdatecategoryComponent, /*ProblemPage*/],
+  declarations: [AppComponent, CreatesubcategoryComponent, CreatecategoryComponent, UpdatecategoryComponent, /*ProblemPage*/],
   entryComponents: [],
   imports: [
     BrowserModule,

@@ -23,45 +23,43 @@ export class CategoriesPage implements OnInit {
   async getCategories(){
     try{
       let categoriesResponse: any = await this.categoryService.getAll();
-        if(null!= categoriesResponse){
-
-          //console.log(problems);
-          this.categories = categoriesResponse.categories;
-          console.log(this.categories);
-          }
-        }catch(ex){
-          console.log(ex.error.message)
+      if(null!= categoriesResponse){
+        this.categories = categoriesResponse.categories;
+        console.log(this.categories);
         }
+      }catch(ex){
+        console.log(ex.error.message)
       }
+    }
 
-async createCategory(){
+  async createCategory(){
     let createModal = await this.modalController.create({
       component: CreatecategoryComponent,
     });
     createModal.onDidDismiss().then(res=>{
       this.getCategories();
     });
-   return await createModal.present();
- }
- 
-async deleteCategory(id: any){
-  this.categoryService.delete(id).then(res=> {
-    console.log(res);
-    this.getCategories();
-  });
-}
+    return await createModal.present();
+  }
 
-async editCategory(category: any){
-  let createModal = await this.modalController.create({
-    component: UpdatecategoryComponent,
-    componentProps: {
-      category: category,
-    }
-  });
-  createModal.onDidDismiss().then(res=>{
-    this.getCategories();
-  });
- return await createModal.present();
-}
+  async deleteCategory(id: any){
+    this.categoryService.delete(id).then(res=> {
+      console.log(res);
+      this.getCategories();
+    });
+  }
+
+  async editCategory(category: any){
+    let createModal = await this.modalController.create({
+      component: UpdatecategoryComponent,
+      componentProps: {
+        category: category,
+      }
+    });
+    createModal.onDidDismiss().then(res=>{
+      this.getCategories();
+    });
+    return await createModal.present();
+  }
 
 }

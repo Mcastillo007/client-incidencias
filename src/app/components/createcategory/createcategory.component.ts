@@ -30,7 +30,6 @@ export class CreatecategoryComponent implements OnInit {
   }
   ngOnInit() {}
 
-
   submitForm() {
     this.isSubmitted = true;
     if (!this.categoryForm.valid) {

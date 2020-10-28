@@ -17,5 +17,13 @@ export class SubcategoryService {
     return this.apiService.get('subcategory/'+id, null);
   }
 
+  create(subcategory: any){
+    console.log(subcategory);
+    return this.apiService.post('subcategory', subcategory);
+  }
+
+  delete(id: any){
+    return this.apiService.delete('subcategory/' + id, null);
+  }
 
 }
