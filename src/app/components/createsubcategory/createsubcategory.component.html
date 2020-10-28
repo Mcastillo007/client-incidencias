@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="subcategoryForm" (ngSubmit)="submitForm()">
     <ion-item lines="full">
       <ion-label position="floating">Nombre</ion-label>
       <ion-input  formControlName="name" type="text" ></ion-input>
@@ -20,10 +20,11 @@
       <ion-label position="floating">Descripción</ion-label>
       <ion-input formControlName="description" type="text"></ion-input>
     </ion-item>
-
-    <ion-item lines="full">
+    <ion-item>
       <ion-label position="floating">Categoria</ion-label>
-      <ion-input formControlName="category" type="text"></ion-input>
+      <ion-select [compareWith]="compareWith">
+        <ion-select-option [value]="category._id" *ngFor="let category of categories">{{category.name}}</ion-select-option>
+      </ion-select>
     </ion-item>
 
     <ion-row>

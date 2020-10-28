@@ -25,14 +25,15 @@ export class SubcategoriesPage implements OnInit {
       let subcategoriesResponse: any = await this.subcategoryService.getAll();
       if (null != subcategoriesResponse){
 
-          console.log(this.subcategories);
-          this.subcategories = subcategoriesResponse.subcategories;
-          console.log(this.subcategories);
-          }
-        }catch (ex){
-          console.log(ex.error.message)
-        }
+        console.log(this.subcategories);
+        this.subcategories = subcategoriesResponse.subcategories;
+        console.log(this.subcategories);
       }
+    }catch (ex){
+      console.log(ex.error.message)
+    }
+  }
+  
   async createSubcategory(){
     let createModal = await this.modalController.create({
       component: CreatesubcategoryComponent,

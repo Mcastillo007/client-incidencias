@@ -25,7 +25,7 @@ import { CreatesubcategoryComponent } from './components/createsubcategory/creat
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
-    
+
   ],
   providers: [
     StatusBar,

@@ -4,6 +4,7 @@ import { NavParams, ModalController } from '@ionic/angular';
 import { Subcategory } from 'src/app/models/subcategory';
 import { Category } from 'src/app/models/category';
 import { ApiService } from 'src/app/services/api.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-createsubcategory',
@@ -15,21 +16,41 @@ export class CreatesubcategoryComponent implements OnInit {
   subcategory: any;
   subcategoryForm: FormGroup;
   isSubmitted = false;
+  categories: any = [];
 
   constructor(
     private apiService: ApiService,
     private modalController: ModalController,
     private formBuilder: FormBuilder,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private categoryService: CategoryService,
   ) {
     this.subcategoryForm = new FormGroup({
       'name': new FormControl(null),
       'category': new FormControl(null),
       'description': new FormControl(null),
-    })
+    });
   }
 
-  ngOnInit() {}
+  async ionViewWillEnter(){
+    await this.getCategories();
+  }
+
+  ngOnInit() {
+    
+  }
+
+  async getCategories(){
+    try{
+      let categoriesResponse: any = await this.categoryService.getAll();
+      if(null!= categoriesResponse){
+        this.categories = categoriesResponse.categories;
+        console.log(this.categories);
+        }
+      }catch(ex){
+        console.log(ex.error.message)
+      }
+    }
 
   submitForm() {
     this.isSubmitted = true;
