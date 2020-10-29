@@ -11,7 +11,7 @@ import { CategoryService } from '../../services/category.service';
   templateUrl: './createsubcategory.component.html',
   styleUrls: ['./createsubcategory.component.scss'],
 })
-export class CreatesubcategoryComponent implements OnInit {
+export class CreatesubcategoryComponent {
 
   subcategory: any;
   subcategoryForm: FormGroup;
@@ -25,32 +25,13 @@ export class CreatesubcategoryComponent implements OnInit {
     private navParams: NavParams,
     private categoryService: CategoryService,
   ) {
+    this.categories = navParams.get('categories');
     this.subcategoryForm = new FormGroup({
       'name': new FormControl(null),
       'category': new FormControl(null),
       'description': new FormControl(null),
     });
   }
-
-  async ionViewWillEnter(){
-    await this.getCategories();
-  }
-
-  ngOnInit() {
-    
-  }
-
-  async getCategories(){
-    try{
-      let categoriesResponse: any = await this.categoryService.getAll();
-      if(null!= categoriesResponse){
-        this.categories = categoriesResponse.categories;
-        console.log(this.categories);
-        }
-      }catch(ex){
-        console.log(ex.error.message)
-      }
-    }
 
   submitForm() {
     this.isSubmitted = true;

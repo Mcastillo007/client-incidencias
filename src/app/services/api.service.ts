@@ -61,14 +61,22 @@ export class ApiService {
   }
 
   private getPostHeaders(): {} {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': localStorage.getItem('token')
-      })
-    };
-    console.log(httpOptions);
-    return httpOptions;
+    if(null!=localStorage.getItem('token')){
+      return {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token')
+        })
+      };
+    }
+    else{
+      return {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+    }
+
   }
 
 }

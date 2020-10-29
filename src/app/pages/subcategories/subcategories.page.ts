@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CreatesubcategoryComponent } from 'src/app/components/createsubcategory/createsubcategory.component';
+import { CategoryService } from 'src/app/services/category.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 
 @Component({
@@ -9,34 +10,54 @@ import { SubcategoryService } from 'src/app/services/subcategory.service';
   styleUrls: ['./subcategories.page.scss'],
 })
 export class SubcategoriesPage implements OnInit {
+
   subcategories: any = [];
+  categories: any[];
 
   constructor(
     private subcategoryService: SubcategoryService,
     private modalController: ModalController,
-    ) { }
+    private categoriesService: CategoryService
+  ) { }
 
-  async  ngOnInit() {
+  async ngOnInit() {
     await this.getSubcategories();
+    await this.getCategories();
   }
 
-  async getSubcategories(){
-    try{
+
+  async getCategories() {
+    try {
+      let categoriesResponse: any = await this.categoriesService.getAll();
+      if (null != categoriesResponse) {
+        this.categories = categoriesResponse.categories;
+        console.log(this.categories);
+      }
+    } catch (ex) {
+      console.log(ex.error.message)
+    }
+  }
+
+  async getSubcategories() {
+    try {
       let subcategoriesResponse: any = await this.subcategoryService.getAll();
-      if (null != subcategoriesResponse){
+      if (null != subcategoriesResponse) {
 
         console.log(this.subcategories);
         this.subcategories = subcategoriesResponse.subcategories;
         console.log(this.subcategories);
       }
-    }catch (ex){
+    } catch (ex) {
       console.log(ex.error.message)
     }
   }
-  
-  async createSubcategory(){
+
+  async createSubcategory() {
     let createModal = await this.modalController.create({
       component: CreatesubcategoryComponent,
+      componentProps: {
+        categories: this.categories
+      }
     });
     createModal.onDidDismiss().then(res => {
       this.getSubcategories();
@@ -44,7 +65,7 @@ export class SubcategoriesPage implements OnInit {
     return await createModal.present();
   }
 
-  async deleteSubcategory(id: any){
+  async deleteSubcategory(id: any) {
     this.subcategoryService.delete(id).then(res => {
       console.log(res);
       this.getSubcategories();

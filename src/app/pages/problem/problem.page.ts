@@ -25,7 +25,8 @@ export class ProblemPage implements OnInit {
 
  async reply(answer: any){
    answer.problem = this.problem._id;
-   answer.user = this.problem.user_create;
+   console.log( JSON.parse(localStorage.getItem('user')));
+   answer.user = JSON.parse(localStorage.getItem('user')).sub;
     await this.problemService.reply(answer);
     await this.getProblem();
     this.answer = {};

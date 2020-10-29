@@ -22,8 +22,8 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Categoria</ion-label>
-      <ion-select [compareWith]="compareWith">
-        <ion-select-option [value]="category._id" *ngFor="let category of categories">{{category.name}}</ion-select-option>
+      <ion-select formControlName="category" [compareWith]="compareWith">
+        <ion-select-option *ngFor="let category of categories"  [value]="category._id">{{category.name}}</ion-select-option>
       </ion-select>
     </ion-item>
 
