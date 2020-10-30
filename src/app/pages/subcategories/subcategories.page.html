@@ -5,33 +5,37 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    
-    <ion-item *ngFor="let subcategory of subcategories">
-      <ion-card>
-        <ion-card-header>
-          <h1>Nombre:</h1>
-          <ion-card-title>{{subcategory.name}}</ion-card-title>
-          <h3>Categoría</h3>
-          <ion-card-subtitle>{{subcategory.category?.name}}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <h3>Descripción:</h3>
-          {{subcategory.description}}
-        </ion-card-content>
-        <ion-card-content>
-          <h2>
-            Opciones:
-            <ion-button (click)="deleteSubcategory(subcategory._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
-            <ion-button (click)="editSubcategory(subcategory)" class="ion-float-center" color="secondary"><ion-icon name="pencil-outline"></ion-icon></ion-button>
-          </h2>
+  <ion-grid>
+    <ion-row>
+      <ion-list class="opa">
+        <ion-item *ngFor="let subcategory of subcategories">
+          <ion-card>
+            <ion-card-header>
+              <h1>Nombre:</h1>
+              <ion-card-title>{{subcategory.name}}</ion-card-title>
+              <h3>Categoría</h3>
+              <ion-card-subtitle>{{subcategory.category?.name}}</ion-card-subtitle>
+            </ion-card-header>
           
-        </ion-card-content>
-    
-      </ion-card>
-    </ion-item>
-  </ion-list>
+            <ion-card-content>
+              <h3>Descripción:</h3>
+              {{subcategory.description}}
+            </ion-card-content>
+            <ion-card-content>
+              <h2>
+                Opciones:
+                <ion-button (click)="deleteSubcategory(subcategory._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+                <ion-button (click)="editSubcategory(subcategory)" class="ion-float-center" color="secondary"><ion-icon name="pencil-outline"></ion-icon></ion-button>
+              </h2>
+              
+            </ion-card-content>
+        
+          </ion-card>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+  
 </ion-content>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
