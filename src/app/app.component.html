@@ -3,8 +3,11 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
+          <ion-header-bar class="bar-balanced">
+            <img src="../assets/images/logo-01.png"/>
+          </ion-header-bar>
           
-          <ion-list-header><ion-icon name="logo-angular"></ion-icon>INCIDENCIAS</ion-list-header>
+          <ion-list-header></ion-list-header>
           <ion-note>EICI UCM 2020</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">

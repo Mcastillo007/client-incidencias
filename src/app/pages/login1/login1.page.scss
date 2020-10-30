@@ -14,7 +14,13 @@ ion-content{
     text-align: center;
     align-items: center;
 }
-
+.center {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 50%;
+}
 .opa {
     opacity: 0.85;
 }

@@ -4,12 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
+  
+
 
 <ion-content>
+  <ion-card class="opa" style="width: 50%;position: absolute;text-align: center;">
+    <ion-card-title style="text-align: center;">
+      <img style="width: 150px; height: 150px;" src="../../../assets/images/logo_ucm.png"/>
+    </ion-card-title>
 
-  <ion-card class="opa">
+    <h3 >
+      LOGIN
+    </h3>
     <ion-card-content>
-      <ion-input type="text" [(ngModel)]="user.rut"  placeholder="Rut"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.rut"  placeholder="Rut" style="background-color: rgb(255, 255, 255);"></ion-input>
     </ion-card-content>
     <ion-card-content>
       <ion-input type="password" [(ngModel)]="user.password"  placeholder="Contraseña"></ion-input>
