@@ -17,5 +17,14 @@ export class SubjectService {
     return this.apiService.get('subject/'+id, null);
   }
 
+  create(subject: any){
+    console.log(subject);
+    return this.apiService.post('subject', subject);
+  }
+
+  delete(id: any){
+    return this.apiService.delete('subject/' + id, null);
+  }
+
 
 }

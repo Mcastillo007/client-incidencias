@@ -13,10 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatecategoryComponent } from './components/createcategory/createcategory.component';
 import { UpdatecategoryComponent } from './components/updatecategory/updatecategory.component';
 import { CreatesubcategoryComponent } from './components/createsubcategory/createsubcategory.component';
+import { CreatesubjectComponent } from './components/createsubject/createsubject.component';
 
 
 @NgModule({
-  declarations: [AppComponent, CreatesubcategoryComponent, CreatecategoryComponent, UpdatecategoryComponent, /*ProblemPage*/],
+  declarations: [AppComponent, CreatesubcategoryComponent, CreatecategoryComponent, UpdatecategoryComponent,CreatesubjectComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

@@ -19,7 +19,7 @@
           {{subject.teacher}}
         </ion-card-content>
         <ion-card-content>
-          <ion-button class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button (click)="deleteSubject(subject._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
           <ion-button class="ion-float-center" color="secondary"><ion-icon name="open"></ion-icon></ion-button>
         </ion-card-content>
       </ion-card>
@@ -27,3 +27,9 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="createSubject()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

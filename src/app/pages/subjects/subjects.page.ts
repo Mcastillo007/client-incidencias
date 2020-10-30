@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CreatesubjectComponent } from 'src/app/components/createsubject/createsubject.component';
 import { SubjectService } from 'src/app/services/subject.service';
-import { Subject } from '../../models/subject';
+
 
 @Component({
   selector: 'app-subjects',
@@ -10,7 +12,8 @@ import { Subject } from '../../models/subject';
 export class SubjectsPage implements OnInit {
   subjects: any = [];
 
-  constructor(private subjectService: SubjectService) { }
+  constructor(private subjectService: SubjectService,
+              private modalController: ModalController,) { }
 
   async  ngOnInit() {
     await this.getSubjects();
@@ -29,4 +32,35 @@ export class SubjectsPage implements OnInit {
           console.log(ex.error.message)
         }
       }
+
+      async createSubject(){
+        let createModal = await this.modalController.create({
+          component: CreatesubjectComponent,
+        });
+        createModal.onDidDismiss().then(res=>{
+          this.getSubjects();
+        });
+        return await createModal.present();
+      }
+    
+      async deleteSubject(id: any){
+        this.subjectService.delete(id).then(res=> {
+          console.log(res);
+          this.getSubjects();
+        });
+      }
+    
+      /*async editSubject(category: any){
+        let createModal = await this.modalController.create({
+          component: UpdatecategoryComponent,
+          componentProps: {
+            category: category,
+          }
+        });
+        createModal.onDidDismiss().then(res=>{
+          this.getCategories();
+        });
+        return await createModal.present();
+      }*/
+        
 }
