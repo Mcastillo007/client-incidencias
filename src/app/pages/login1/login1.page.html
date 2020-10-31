@@ -20,12 +20,16 @@
           <ion-input type="password" [(ngModel)]="user.password"  placeholder="Contraseña"></ion-input>
         </ion-card-content>
         <ion-card-content >
-          <ion-button  (click)="login(user)" expand="block" class="color-deg" style="text-align: center;" shape="round" fill="outline" style="color: whitesmoke;">Iniciar Sesión</ion-button>
+          <ion-button  (click)="login(user)" size="medium" class="color-deg" style="text-align: center;" shape="round" fill="outline" style="color: whitesmoke;">Iniciar Sesión</ion-button>
         </ion-card-content>
-    
+        <ion-card-content>
+          O
+        </ion-card-content>
+        <ion-card-content>
+          <ion-button size="small" color="secondary" (click)="register()">Registrar</ion-button>
+        </ion-card-content>
       </ion-card>
     </ion-row>
   </ion-grid>
-  
 </ion-content>
 
