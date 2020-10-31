@@ -20,5 +20,9 @@ export class UserService {
   registerUser(user: any){
     return this.apiService.post('register', null);
   }
+  
+  delete(id: any){
+    return this.apiService.delete('user/' + id, null);
+  }
 
 }

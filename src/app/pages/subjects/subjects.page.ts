@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CreatesubjectComponent } from 'src/app/components/createsubject/createsubject.component';
+import { UpdatesubjectComponent } from 'src/app/components/updatesubject/updatesubject.component';
 import { SubjectService } from 'src/app/services/subject.service';
 
 
@@ -50,17 +51,17 @@ export class SubjectsPage implements OnInit {
         });
       }
     
-      /*async editSubject(category: any){
+      async editSubject(subject: any){
         let createModal = await this.modalController.create({
-          component: UpdatecategoryComponent,
+          component: UpdatesubjectComponent,
           componentProps: {
-            category: category,
+            subject: subject,
           }
         });
         createModal.onDidDismiss().then(res=>{
-          this.getCategories();
+          this.getSubjects();
         });
         return await createModal.present();
-      }*/
+      }
         
 }

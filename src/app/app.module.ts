@@ -15,6 +15,7 @@ import { UpdatecategoryComponent } from './components/updatecategory/updatecateg
 import { CreatesubcategoryComponent } from './components/createsubcategory/createsubcategory.component';
 import { CreatesubjectComponent } from './components/createsubject/createsubject.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UpdatesubjectComponent } from './components/updatesubject/updatesubject.component';
 
 
 @NgModule({
@@ -24,8 +25,10 @@ import { RegisterComponent } from './components/register/register.component';
     CreatecategoryComponent,
     UpdatecategoryComponent,
     RegisterComponent,
-    CreatesubjectComponent
+    CreatesubjectComponent,
+    UpdatesubjectComponent
   ],
+
   entryComponents: [],
   imports: [
     BrowserModule,

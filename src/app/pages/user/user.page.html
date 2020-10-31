@@ -26,7 +26,7 @@
         <ion-card-content>
           <h2>
             Accion:
-            <ion-button class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+            <ion-button (click)="deleteUser(user._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
             <ion-button class="ion-float-center" color="secondary"><ion-icon name="create"></ion-icon></ion-button>
           </h2>
           
