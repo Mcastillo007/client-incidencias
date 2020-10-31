@@ -20,6 +20,9 @@ export class ProblemService {
   reply(answer: any){
     return this.apiService.post('answers', answer);
   }
+  createProblem(){
+    return this.apiService.post('problem', null);
+  }
 
 }
 

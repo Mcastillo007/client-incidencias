@@ -1,3 +1,45 @@
-<p>
-  newproblem works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  <ion-title>Reportar problema</ion-title> 
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="problemForm" (ngSubmit)="submitForm()">
+    <ion-item lines="full">
+      <ion-label position="floating">Categoria</ion-label>
+      <ion-select formControlName="category" [compareWith]="compareWith">
+        <ion-select-option *ngFor="let category of categories"  [value]="category._id">{{category.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Subcategoria</ion-label>
+      <ion-select formControlName="subcategory" [compareWith]="compareWith">
+        <ion-select-option *ngFor="let subcategory of subcategories"  [value]="subcategory._id">{{subcategory.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Curso</ion-label>
+      <ion-select formControlName="subject" [compareWith]="compareWith">
+        <ion-select-option *ngFor="let subject of subjects"  [value]="subject._id">{{subject.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">descripción del problema</ion-label>
+      <ion-input formControlName="description" type="text"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="success" expand="block">Reportar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
