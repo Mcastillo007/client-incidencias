@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
 
   ) {
     this.registerForm = new FormGroup({
+      
       'name': new FormControl(null, [Validators.required, Validators.minLength(3)]),
       'surname': new FormControl(null, [Validators.required, Validators.minLength(3)]),
       'rut': new FormControl(null, [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
