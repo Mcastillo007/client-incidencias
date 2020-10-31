@@ -17,4 +17,8 @@ export class UserService {
     return this. apiService.get('user/'+id, null);
   }
 
+  delete(id: any){
+    return this.apiService.delete('user/' + id, null);
+  }
+
 }

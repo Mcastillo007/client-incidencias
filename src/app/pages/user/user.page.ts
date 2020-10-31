@@ -24,4 +24,35 @@ export class UserPage implements OnInit {
       console.log(ex.error.messaje);
     }
   }
+
+  /*async createSubject(){
+    let createModal = await this.modalController.create({
+      component: CreatesubjectComponent,
+    });
+    createModal.onDidDismiss().then(res=>{
+      this.getSubjects();
+    });
+    return await createModal.present();
+  }
+*/
+  async deleteUser(id: any){
+    this.userService.delete(id).then(res=> {
+      console.log(res);
+      this.getUsers();
+    });
+  }
+/*
+  async editSubject(subject: any){
+    let createModal = await this.modalController.create({
+      component: UpdatesubjectComponent,
+      componentProps: {
+        subject: subject,
+      }
+    });
+    createModal.onDidDismiss().then(res=>{
+      this.getSubjects();
+    });
+    return await createModal.present();
+  }
+*/
 }

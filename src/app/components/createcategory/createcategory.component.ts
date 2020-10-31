@@ -24,7 +24,7 @@ export class CreatecategoryComponent implements OnInit {
     this.categoryForm = new FormGroup({
 
       'name': new FormControl(null),
-      'description': new FormControl(null, [Validators.required, Validators.maxLength(10)])
+      'description': new FormControl(null, [Validators.required, Validators.maxLength(15)])
     });
   }
   ngOnInit() {}
