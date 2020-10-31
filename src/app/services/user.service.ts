@@ -17,4 +17,8 @@ export class UserService {
     return this. apiService.get('user/'+id, null);
   }
 
+  registerUser(user: any){
+    return this.apiService.post('register', null);
+  }
+
 }

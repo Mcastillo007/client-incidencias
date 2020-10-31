@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import jwt_decode from "jwt-decode";
+import { ModalController } from '@ionic/angular';
+import { RegisterComponent } from 'src/app/components/register/register.component';
 @Component({
   selector: 'app-login1',
   templateUrl: './login1.page.html',
@@ -9,7 +11,12 @@ import jwt_decode from "jwt-decode";
 })
 export class Login1Page implements OnInit {
   user: any = {};
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private modalController: ModalController
+
+    ) { }
 
   ngOnInit() {
   }
@@ -30,9 +37,6 @@ export class Login1Page implements OnInit {
     catch (ex) {
       console.log(ex);
     }
-
-
-
   }
 
   parseJwt(token) {
@@ -44,6 +48,16 @@ export class Login1Page implements OnInit {
 
     return JSON.parse(jsonPayload);
   };
+
+  async register(){
+    let createModal = await this.modalController.create({
+      component: RegisterComponent,
+    });
+    createModal.onDidDismiss().then(res => {
+      //this.register();
+    });
+    return await createModal.present();
+  }
 
 
 }

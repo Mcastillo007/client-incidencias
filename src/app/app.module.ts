@@ -14,10 +14,18 @@ import { CreatecategoryComponent } from './components/createcategory/createcateg
 import { UpdatecategoryComponent } from './components/updatecategory/updatecategory.component';
 import { CreatesubcategoryComponent } from './components/createsubcategory/createsubcategory.component';
 import { CreatesubjectComponent } from './components/createsubject/createsubject.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
-  declarations: [AppComponent, CreatesubcategoryComponent, CreatecategoryComponent, UpdatecategoryComponent,CreatesubjectComponent],
+  declarations: [
+    AppComponent,
+    CreatesubcategoryComponent,
+    CreatecategoryComponent,
+    UpdatecategoryComponent,
+    RegisterComponent,
+    CreatesubjectComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
