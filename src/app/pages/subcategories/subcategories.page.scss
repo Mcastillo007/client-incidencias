@@ -1,6 +1,13 @@
 ion-content{
     --background: #fff url('../../../assets/images/fondo_ucm.jpg') no-repeat center center / cover;
 }
+ion-list {
+    background: transparent;
+
+    ion-item {
+        --background: inherit;
+    }
+}
 .color-deg {
     background: rgba(30,63,132,1);
     background: -moz-linear-gradient(left, rgba(30,63,132,1) 0%, rgba(30,63,132,1) 36%, rgba(0,162,227,1) 72%, rgba(0,162,227,1) 94%, rgba(0,162,227,1) 99%, rgba(0,162,227,1) 100%);
@@ -23,9 +30,6 @@ ion-content{
 }
 .opa {
     opacity: 0.85;
-}
-.back-opa {
-    background-color: cyan; ;
 }
 ion-grid{
     height: 100%;

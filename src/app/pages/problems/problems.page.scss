@@ -25,3 +25,10 @@ ion-content{
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
 }
+ion-list {
+    background: transparent;
+
+    ion-item {
+        --background: inherit;
+    }
+}

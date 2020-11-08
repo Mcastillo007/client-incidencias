@@ -1,0 +1,10 @@
+ion-content{
+    --background: #fff url('../../../assets/images/fondo_ucm.jpg') no-repeat center center / cover;
+}
+ion-list {
+    background: transparent;
+
+    ion-item {
+        --background: inherit;
+    }
+}

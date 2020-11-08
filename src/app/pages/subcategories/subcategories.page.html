@@ -5,25 +5,22 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      
-        <ion-item *ngFor="let subcategory of subcategories" style="opacity: inherit;">
-          <ion-card class="back-opa">
-            <ion-card-header>
-              <ion-card-title>Nombre: {{subcategory.name}}</ion-card-title>
-              <ion-card-subtitle>Categoria: {{subcategory.category?.name}}</ion-card-subtitle>
-            </ion-card-header>
-            <ion-card-content>Descripción: {{subcategory.description}}</ion-card-content>
-            <ion-card-content>            
-              <ion-button (click)="deleteSubcategory(subcategory._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
-              <ion-button (click)="editSubcategory(subcategory)" class="ion-float-center" color="secondary"><ion-icon name="pencil-outline"></ion-icon></ion-button>
-            </ion-card-content>
-          </ion-card>
-        </ion-item>
-     
-    </ion-row>
-  </ion-grid>
+  <ion-list>
+    <ion-item *ngFor="let subcategory of subcategories" class="transp">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Nombre: {{subcategory.name}}</ion-card-title>
+          <ion-card-subtitle>Categoria: {{subcategory.category?.name}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>Descripción: {{subcategory.description}}</ion-card-content>
+        <ion-card-content>            
+          <ion-button (click)="deleteSubcategory(subcategory._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button (click)="editSubcategory(subcategory)" class="ion-float-center" color="secondary"><ion-icon name="pencil-outline"></ion-icon></ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+        
 </ion-content>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
