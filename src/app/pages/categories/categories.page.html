@@ -18,7 +18,7 @@
           {{category.description}}
         </ion-card-content>
         <ion-card-content>
-          <ion-button (click)="deleteCategory(category._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button (click)="showConfirmAlert(category._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
           <ion-button (click)="editCategory(category)" class="ion-float-center" color="secondary"><ion-icon name="pencil-outline"></ion-icon></ion-button>
       
         </ion-card-content>

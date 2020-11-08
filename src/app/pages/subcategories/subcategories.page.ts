@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { CreatesubcategoryComponent } from 'src/app/components/createsubcategory/createsubcategory.component';
 import { CategoryService } from 'src/app/services/category.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
@@ -17,7 +17,8 @@ export class SubcategoriesPage implements OnInit {
   constructor(
     private subcategoryService: SubcategoryService,
     private modalController: ModalController,
-    private categoriesService: CategoryService
+    private categoriesService: CategoryService,
+    private alertCtrl: AlertController,
   ) { }
 
   async ngOnInit() {
@@ -36,6 +37,31 @@ export class SubcategoriesPage implements OnInit {
     } catch (ex) {
       console.log(ex.error.message)
     }
+  }
+  async showConfirmAlert(id: any) {
+    let alert = this.alertCtrl.create({
+      message: '¿Estas seguro de borrar esta subcategoria?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            this.subcategoryService.delete(id).then(res => {
+              console.log(res);
+              this.getSubcategories();
+            });
+            console.log('Buy clicked');
+          }
+        }
+      ]
+    });
+    (await alert).present();
   }
 
   async getSubcategories() {
