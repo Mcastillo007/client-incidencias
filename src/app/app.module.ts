@@ -17,6 +17,8 @@ import { CreatesubjectComponent } from './components/createsubject/createsubject
 import { RegisterComponent } from './components/register/register.component';
 import { UpdatesubjectComponent } from './components/updatesubject/updatesubject.component';
 import { NewproblemComponent } from './components/newproblem/newproblem.component';
+import { CreateuserComponent } from './components/createuser/createuser.component';
+import { UpdateuserComponent } from './components/updateuser/updateuser.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { NewproblemComponent } from './components/newproblem/newproblem.componen
     RegisterComponent,
     CreatesubjectComponent,
     UpdatesubjectComponent,
-    NewproblemComponent
+    NewproblemComponent,
+    CreateuserComponent,
+    UpdateuserComponent
   ],
 
   entryComponents: [],

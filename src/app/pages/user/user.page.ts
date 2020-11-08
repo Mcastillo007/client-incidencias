@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { CreateuserComponent } from 'src/app/components/createuser/createuser.component';
+import { UpdateuserComponent } from 'src/app/components/updateuser/updateuser.component';
 import { UserService } from 'src/app/services/user.service';
 import { User } from './../../models/user';
 
@@ -10,7 +12,9 @@ import { User } from './../../models/user';
 })
 export class UserPage implements OnInit {
   users: any = [];
-  constructor(private userService: UserService,private alertCtrl: AlertController) { }
+  constructor(private userService: UserService,
+              private alertCtrl: AlertController,
+              private modalController: ModalController,) { }
 
   async ngOnInit() {
     await this.getUsers();
@@ -26,16 +30,16 @@ export class UserPage implements OnInit {
     }
   }
 
-  /*async createSubject(){
+  async createUser(){
     let createModal = await this.modalController.create({
-      component: CreatesubjectComponent,
+      component: CreateuserComponent,
     });
     createModal.onDidDismiss().then(res=>{
-      this.getSubjects();
+      this.getUsers();
     });
     return await createModal.present();
   }
-*/
+
 async showConfirmAlert(id: any) {
   let alert = this.alertCtrl.create({
     message: '¿Estas seguro de borrar este usuario?',
@@ -67,18 +71,17 @@ async showConfirmAlert(id: any) {
       this.getUsers();
     });
   }
-/*
-  async editSubject(subject: any){
+
+  async editUser(user: any){
     let createModal = await this.modalController.create({
-      component: UpdatesubjectComponent,
+      component: UpdateuserComponent,
       componentProps: {
-        subject: subject,
+        user: user,
       }
     });
     createModal.onDidDismiss().then(res=>{
-      this.getSubjects();
+      this.getUsers();
     });
     return await createModal.present();
   }
-*/
 }
