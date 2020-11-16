@@ -10,6 +10,17 @@
 </ion-header>
 <ion-content class="ion-padding">
   <form [formGroup]="problemForm" (ngSubmit)="submitForm()">
+
+    <ion-item lines="full" hidden>
+      <ion-label position="floating">ID</ion-label>
+      <ion-input  formControlName="user_create" type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input  formControlName="name" type="text" ></ion-input>
+    </ion-item>
+
     <ion-item lines="full">
       <ion-label position="floating">Categoria</ion-label>
       <ion-select formControlName="category" [compareWith]="compareWith">
@@ -25,7 +36,7 @@
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Curso</ion-label>
+      <ion-label position="floating">Ramo</ion-label>
       <ion-select formControlName="subject" [compareWith]="compareWith">
         <ion-select-option *ngFor="let subject of subjects"  [value]="subject._id">{{subject.name}}</ion-select-option>
       </ion-select>

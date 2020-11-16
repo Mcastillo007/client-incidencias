@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { CreatesubcategoryComponent } from 'src/app/components/createsubcategory/createsubcategory.component';
+import { UpdatesubcategoryComponent } from 'src/app/components/updatesubcategory/updatesubcategory.component';
 import { CategoryService } from 'src/app/services/category.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 
@@ -9,7 +10,7 @@ import { SubcategoryService } from 'src/app/services/subcategory.service';
   templateUrl: './subcategories.page.html',
   styleUrls: ['./subcategories.page.scss'],
 })
-export class SubcategoriesPage implements OnInit {
+export class SubcategoriesPage {
 
   subcategories: any = [];
   categories: any[];
@@ -21,10 +22,12 @@ export class SubcategoriesPage implements OnInit {
     private alertCtrl: AlertController,
   ) { }
 
-  async ngOnInit() {
+  async ionViewWillEnter () {
     await this.getSubcategories();
     await this.getCategories();
   }
+
+
 
 
   async getCategories() {
@@ -98,16 +101,17 @@ export class SubcategoriesPage implements OnInit {
     });
   }
 
-  /*async editCategory(category: any){
+  async editSubcategory(subcategory: any){
     let createModal = await this.modalController.create({
-      component: UpdatecategoryComponent,
+      component: UpdatesubcategoryComponent,
       componentProps: {
-        category: category,
+        subcategory: subcategory,
+        categories: this.categories,
       }
     });
     createModal.onDidDismiss().then(res=>{
       this.getCategories();
     });
   return await createModal.present();
-  }*/
+  }
 }

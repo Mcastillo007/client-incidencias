@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-
+import { ChartsModule } from 'ng2-charts';
+import { ChartsComponent } from 'src/app/components/charts/charts.component';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    ChartsModule
   ],
   declarations: [HomePage]
 })

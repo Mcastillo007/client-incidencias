@@ -19,6 +19,22 @@ import { UpdatesubjectComponent } from './components/updatesubject/updatesubject
 import { NewproblemComponent } from './components/newproblem/newproblem.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
 import { UpdateuserComponent } from './components/updateuser/updateuser.component';
+import { ChartsModule } from 'ng2-charts';
+import { PipesModule } from './pipes/pipes.module';
+import { ChartsComponent } from './components/charts/charts.component';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+
+let firebase: {
+  apiKey: 'AIzaSyAqVASDwDM9-WbLhisUS8XARsAGsbOVBHk',
+  authDomain: 'software-2-d401f.firebaseapp.com',
+  databaseURL: 'https://software-2-d401f.firebaseio.com',
+  projectId: 'software-2-d401f',
+  storageBucket: 'software-2-d401f.appspot.com',
+  messagingSenderId: '193879742095',
+  appId: '1:193879742095:web:7f0f866b78b642205702fa'
+}
+
 
 
 @NgModule({
@@ -32,23 +48,29 @@ import { UpdateuserComponent } from './components/updateuser/updateuser.componen
     UpdatesubjectComponent,
     NewproblemComponent,
     CreateuserComponent,
-    UpdateuserComponent
+    UpdateuserComponent,
+    
+
   ],
 
   entryComponents: [],
   imports: [
+    PipesModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    ChartsModule,
+    AngularFireModule.initializeApp(firebase),
+    AngularFireStorageModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: BUCKET, useValue: 'software-2-d401f.appspot.com' }
   ],
   bootstrap: [AppComponent]
 })

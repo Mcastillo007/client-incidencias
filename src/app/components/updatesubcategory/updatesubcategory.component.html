@@ -2,25 +2,28 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button color="dark" (click)="closeModal()">
-          <ion-icon name="arrow-back"></ion-icon>
-        </ion-button>
-  </ion-buttons>
-    <ion-title>Crear Subcategoría.</ion-title>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ver categoría.</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <form [formGroup]="subcategoryForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="categoryForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item lines="full" hidden>
+      <ion-label position="floating">ID</ion-label>
+      <ion-input  formControlName="_id" type="text" ></ion-input>
+    </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input  formControlName="name" type="text" ></ion-input>
+      <ion-input formControlName="name" type="text" ></ion-input>
     </ion-item>
-
 
     <ion-item lines="full">
       <ion-label position="floating">Descripción</ion-label>
       <ion-input formControlName="description" type="text"></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-label position="floating">Categoria</ion-label>
       <ion-select formControlName="category" [compareWith]="compareWith">
@@ -30,7 +33,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="success" expand="block">Añadir Subcategoría</ion-button>
+        <ion-button type="submit" color="success" expand="block">Editar categoría</ion-button>
       </ion-col>
     </ion-row>
   </form>

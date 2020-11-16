@@ -4,23 +4,28 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-searchbar placeholder=" AQUÍ PUEDE BUSCAR POR => NOMBRE || APELLIDO || CATEGORÍA || SUBCATEGORÍA || RUT || ESTADO (ABIERTO = ACTIVE,CERRADO = -1)" (ionChange)="Buscar($event)"></ion-searchbar>
+
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let problem of problems">
-      <ion-card>
+      <ion-card *ngFor="let problem of problems | filtro:textoBuscar">
         <ion-card-title> 
           <ion-datetime displayFormat="DD-MMM-YYYY-HH:mm" disabled value={{problem.date_create}}></ion-datetime> 
         </ion-card-title> 
         <ion-card-header>
-          <ion-card-subtitle>Alumno: {{problem.user_create.name}}  {{problem.user_create.surname}}</ion-card-subtitle>
+          <ion-card-subtitle>Alumno: {{problem?.user_create?.name}}  {{problem?.user_create?.surname}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
           Estado:
-          <ion-col *ngIf="problem?.state == 'unactive'"><ion-icon name="radio-button-on-outline" color="danger"></ion-icon></ion-col>
-          <ion-col *ngIf="problem?.state == 'active'"><ion-icon name="radio-button-on-outline" color="success"></ion-icon></ion-col>
+          <ion-col *ngIf="problem?.state == -1">Cerrado<ion-icon name="radio-button-on-outline" color="danger"></ion-icon></ion-col>
+          <ion-col *ngIf="problem?.state != -1">Abierto<ion-icon name="radio-button-on-outline" color="success"></ion-icon></ion-col>
         </ion-card-content>
         
-        <ion-card-content>Rut: {{problem.user_create.rut}}</ion-card-content>
+        <ion-card-content>Rut: {{problem?.user_create?.rut}}
+                          <h4> Categoría: {{problem?.category.name}}</h4>
+                         <h1> Descripción: {{problem?.description}}</h1>
+                         
+        </ion-card-content>
         
         <ion-card-content>
           Opciones:
@@ -29,6 +34,5 @@
         
         </ion-card-content>
       </ion-card>
-    </ion-item>
   </ion-list>
 </ion-content>

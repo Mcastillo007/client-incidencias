@@ -7,9 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { ProblemsPageRoutingModule } from './problems-routing.module';
 
 import { ProblemsPage } from './problems.page';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
+    PipesModule,
     CommonModule,
     FormsModule,
     IonicModule,

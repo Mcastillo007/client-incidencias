@@ -26,9 +26,10 @@
         </ion-card-header>
         <ion-card-content>
           <h4>Fecha: {{problem.date_create | date: 'dd/MM/yyyy'}}</h4>
-          <h4>Estado: <ion-badge>EN PROCESO</ion-badge></h4>
-          <h4>Carater: URGENTE</h4>
-          <h4>Última actualización: ADSDA</h4>
+          <h4 *ngIf="problem.state == -1">Estado: <ion-badge color="danger">INCIDENCIA CERRADA</ion-badge></h4>
+          <h4 *ngIf="problem.state != -1">Estado: <ion-badge color="success">INCIDENCIA ABIERTA</ion-badge></h4>
+          <h4> Descripción: {{problem.description}}</h4>
+          <h4> </h4>
           
         </ion-card-content>
       </ion-card>
@@ -43,14 +44,47 @@
     </ion-col>
     <ion-col size="12">
       <ion-card>
-        <ion-card-content>
+        <ion-card-content *ngIf="problem.state != -1">
          <ion-input [(ngModel)]="answer.message"></ion-input>
        </ion-card-content>
       </ion-card>
-      <ion-button (click)="reply(answer)" class="color-deg" shape="round" fill="outline" style="color: whitesmoke;">
+      <ion-button (click)="reply(answer)" *ngIf="problem.state != -1" class="color-deg" shape="round" fill="outline" style="color: whitesmoke;">
         <ion-icon name="arrow-redo-outline" style="color: whitesmoke;"></ion-icon>
         Responder
       </ion-button>
+
+      <ion-button (click)="closeIncidencia()" *ngIf="problem.state != -1" class="color-deg" shape="round" fill="outline" style="color: whitesmoke;">
+        <ion-icon name="arrow-redo-outline" style="color: whitesmoke;"></ion-icon>
+        Cerrar Incidencia
+      </ion-button>
+      <div class="center">
+        <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+        (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+              Optional custom content that replaces the the entire default content.
+              <button type="button" (click)="openFileSelector()">Browse Files</button>
+            </ng-template>
+        </ngx-file-drop>
+        <div class="upload-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody class="upload-name-style">
+                    <tr *ngFor="let item of files; let i=index">
+                        <td><strong>{{ item.relativePath }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+      <!-- <ion-button (click)="uploadFile()"  class="color-deg" shape="round" fill="outline" style="color: whitesmoke;">
+        <ion-icon name="cloud-upload" style="color: whitesmoke;"></ion-icon>
+        Archivo
+      </ion-button> -->
+
     </ion-col>
   </ion-row>
 

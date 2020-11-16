@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import jwt_decode from "jwt-decode";
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { RegisterComponent } from 'src/app/components/register/register.component';
+import { EventsService } from 'src/app/services/events.service';
+ 
 @Component({
   selector: 'app-login1',
   templateUrl: './login1.page.html',
@@ -14,11 +16,16 @@ export class Login1Page implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private modalController: ModalController
-
+    private modalController: ModalController,
+    private menuCtrl: MenuController,
+    public events: EventsService
     ) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
   async login(user: any) {
@@ -29,7 +36,9 @@ export class Login1Page implements OnInit {
       let token = localStorage.getItem('token');
       var decoded = jwt_decode(token);
       localStorage.setItem('user', JSON.stringify(decoded));
+      console.log(decoded);
       if (null != token) {
+        this.events.publishSomeData(decoded);
         this.router.navigateByUrl('home');
       }
       console.log(userAux);

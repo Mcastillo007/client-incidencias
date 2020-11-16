@@ -14,6 +14,7 @@ import { SubjectService } from '../../services/subject.service';
 export class NewproblemComponent implements OnInit {
 
   problem: any;
+  user: any;
   problemForm: FormGroup;
   isSubmitted = false;
   categories: any = [];
@@ -24,21 +25,29 @@ export class NewproblemComponent implements OnInit {
     private apiService: ApiService,
     private modalController: ModalController,
     private formBuilder: FormBuilder,
-    private NavParams: NavParams,
+    private navParams: NavParams,
     private categoryService: CategoryService,
     private subcategoryService: SubcategoryService,
     private subjectService: SubjectService,
 
   ) {
-    this.categories = NavParams.get('categories');
-    this.subcategories = NavParams.get('subcategories');
-    this.subjects = NavParams.get('subjects');
+    this.categories = navParams.get('categories');
+    this.subcategories = navParams.get('subcategories');
+    this.subjects = navParams.get('subjects');
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user);
     this.problemForm = new FormGroup({
-      'description': new FormControl(null, [Validators.required, Validators.minLength(25)]),
+      'user_create': new FormControl(this.user.sub),
+      'name': new FormControl(this.user.name),
+      'category': new FormControl(null),
+      'subcategory': new FormControl(null),
+      'subject':new FormControl(null),
+      'description': new FormControl(null, [Validators.required, Validators.maxLength(100)]),
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   submitForm() {
     this.isSubmitted = true;

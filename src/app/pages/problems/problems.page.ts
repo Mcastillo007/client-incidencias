@@ -10,26 +10,47 @@ import { Problem } from './../../models/problem';
   templateUrl: './problems.page.html',
   styleUrls: ['./problems.page.scss'],
 })
-export class ProblemsPage implements OnInit {
+export class ProblemsPage {
   problems: any = [];
+  textoBuscar = '';
 
   constructor(private problemService: ProblemService,
               private modalController: ModalController,
               private apiService: ApiService) { }
 
-  async ngOnInit() {
+  async ionViewWillEnter () {
     await this.getProblems();
+  }
+
+   Buscar( event ){
+
+    const texto = event.target.value;
+      this.textoBuscar = texto;
+
+      console.log(texto);
   }
 
   async getProblems() {
     try {
-      let problemsResponse: any = await this.problemService.getAll();
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user.role == 'ROLE_ADMIN'){
+        let problemsResponse: any = await this.problemService.getAll();
       if (null != problemsResponse) {
-
         //console.log(problems);
         this.problems = problemsResponse.problems;
         console.log(this.problems);
+        console.log(this.problems[0]);
       }
+      }else{
+        let problemsResponse: any = await this.problemService.getByUser(user.sub);
+      if (null != problemsResponse) {
+        console.log(user.sub);
+        console.log(problemsResponse);
+        this.problems = problemsResponse.problem;
+        console.log(this.problems);
+      }
+      }
+      
     } catch (ex) {
       console.log(ex.error.message);
     }
