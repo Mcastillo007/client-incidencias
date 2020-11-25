@@ -15,6 +15,12 @@ export class ProblemPage implements OnInit {
   id: any = {};
   problem: any;
   answer: any = {};
+  lastAnswer: any = {};
+  downloadURL: any;
+  public files: NgxFileDropEntry[] = [];
+  
+ 
+
 
   constructor(private problemService: ProblemService,
     private apiService: ApiService,
@@ -32,11 +38,58 @@ export class ProblemPage implements OnInit {
     await this.getProblem();
   }
 
+  async uploadFiles(){
+
+    for (const droppedFile of this.files) {
+
+      // Is it a file?
+      if (droppedFile.fileEntry.isFile) {
+        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        fileEntry.file(async (file: File) => {
+
+
+          const filePath = droppedFile.relativePath;
+          const ref = this.storage.ref(filePath);
+          const task = ref.put(file);
+
+          task
+          .snapshotChanges()
+          .pipe(
+          finalize(() => {
+              ref.getDownloadURL().subscribe(downloadURL => {
+                  this.lastAnswer.file = downloadURL;
+                  this.updateAnswer();
+              });
+        })
+    )
+    .subscribe(); 
+  
+        }); 
+      }else {
+        // It was a directory (empty directories are added, otherwise only files)
+        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
+        console.log(droppedFile.relativePath, fileEntry);
+      }
+    }
+
+
+  }
+
+ async updateAnswer(){
+  await this.problemService.updateAnswer(this.lastAnswer);
+  this.getProblem();
+  }
+
   async reply(answer: any) {
     answer.problem = this.problem._id;
     console.log(JSON.parse(localStorage.getItem('user')));
     answer.user = JSON.parse(localStorage.getItem('user')).sub;
-    await this.problemService.reply(answer);
+     this.lastAnswer = await this.problemService.reply(answer);
+     this.lastAnswer = this.lastAnswer.answer;
+    if( this.lastAnswer != null)
+    {
+      this.uploadFiles();
+    }
     await this.getProblem();
     this.answer = {};
   }
@@ -46,42 +99,11 @@ export class ProblemPage implements OnInit {
     this.problem = problemAux.problem;
   }
 
-  async uploadFile() {
+ 
 
-  }
-
-  public files: NgxFileDropEntry[] = [];
-
-  /*public dropped(files: NgxFileDropEntry[]) {
+  public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
-    for (const droppedFile of files) {
-
-      // Is it a file?
-      if (droppedFile.fileEntry.isFile) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
-
-
-          const filePath = droppedFile.relativePath;
-          const ref = this.storage.ref(filePath);
-          const task = ref.put(file);
-          // observe percentage changes
-         
-          // get notified when the download URL is available
-          task.snapshotChanges().pipe(
-            finalize(() => {
-
-            }))
-          ).subscribe()
-
-
-        });
-      } else {
-        // It was a directory (empty directories are added, otherwise only files)
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
-      }
-    }
+    
   }
 
   public fileOver(event) {
@@ -90,5 +112,5 @@ export class ProblemPage implements OnInit {
 
   public fileLeave(event) {
     console.log(event);
-  }*/
+  }
 }

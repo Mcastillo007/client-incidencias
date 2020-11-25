@@ -29,9 +29,20 @@ export class ProblemService {
   createProblem(problem: any){
     return this.apiService.post('problem', problem);
   }
+  delete(id: any){
+    return this.apiService.delete('problem/' + id, null);
+  }
 
   close(id: any){
     return this.apiService.get('problems/close/'+id, null);
+  }
+
+  getData(){
+    return this.apiService.get('data-problems', null);
+  }
+
+  updateAnswer(answer: any){
+    return this.apiService.post('answers/'+answer._id, answer);
   }
 
 }

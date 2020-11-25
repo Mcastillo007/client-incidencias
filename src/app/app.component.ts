@@ -14,13 +14,14 @@ import { EventsService } from 'src/app/services/events.service';
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public isAdmin: false;
+  public isSecretary: false;
   public user: any;
   public appPages = [
     {
       title: 'HOME',
       url: '/home',
       icon: 'home',
-      isAdmin: false
+      isAdmin: false,
     },
     {
       title: 'INCIDENCIAS',

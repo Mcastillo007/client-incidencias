@@ -28,6 +28,7 @@
           <h4>Fecha: {{problem.date_create | date: 'dd/MM/yyyy'}}</h4>
           <h4 *ngIf="problem.state == -1">Estado: <ion-badge color="danger">INCIDENCIA CERRADA</ion-badge></h4>
           <h4 *ngIf="problem.state != -1">Estado: <ion-badge color="success">INCIDENCIA ABIERTA</ion-badge></h4>
+          <h4> Ramo: {{problem?.subject?.name}}</h4>
           <h4> Descripción: {{problem.description}}</h4>
           <h4> </h4>
           
@@ -37,7 +38,15 @@
     <ion-col size="12">
       <ion-card>
         <ion-card-content>
-          <h4 *ngFor="let answer of problem.answers">{{answer.date | date: 'EEEE/MM/yyyy hh:mm:ss' }} | {{answer.user?.name}}: {{answer.message}}</h4>
+          <div *ngFor="let answer of problem.answers">
+            <h4>{{answer.date | date: 'EEEE/MM/yyyy hh:mm:ss' }} | {{answer.user?.name}}: {{answer.message}}</h4>
+            <ion-button *ngIf="answer.file != null" [attr.href]="answer.file">
+              <ion-icon *ngIf="answer.file.includes('.docx')" slot="start" name="document-outline"></ion-icon>
+              Descargar
+            </ion-button>
+          </div>
+          
+
        </ion-card-content>
       </ion-card>
 
@@ -57,12 +66,12 @@
         <ion-icon name="arrow-redo-outline" style="color: whitesmoke;"></ion-icon>
         Cerrar Incidencia
       </ion-button>
-      <div class="center">
+      <div *ngIf="problem.state != -1" class="center">
         <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
         (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
             <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-              Optional custom content that replaces the the entire default content.
-              <button type="button" (click)="openFileSelector()">Browse Files</button>
+              Arrastre hasta acá los archivos que desea enviar.
+              <button type="button" (click)="openFileSelector()">Examinar archivos</button>
             </ng-template>
         </ngx-file-drop>
         <div class="upload-table">

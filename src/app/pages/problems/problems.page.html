@@ -23,13 +23,14 @@
         
         <ion-card-content>Rut: {{problem?.user_create?.rut}}
                           <h4> Categoría: {{problem?.category.name}}</h4>
+                          <h4> Ramo: {{problem?.subject?.name}}</h4>
                          <h1> Descripción: {{problem?.description}}</h1>
                          
         </ion-card-content>
         
         <ion-card-content>
           Opciones:
-          <ion-button class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button (click)="deleteProblem(problem._id)" class="ion-float-right" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
           <ion-button (click)="editProblem(problem)" class="ion-float-center" color="secondary"><ion-icon name="eye"></ion-icon></ion-button>
         
         </ion-card-content>

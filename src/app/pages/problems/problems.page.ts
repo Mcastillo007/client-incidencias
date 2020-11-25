@@ -56,6 +56,13 @@ export class ProblemsPage {
     }
   }
 
+  async deleteProblem(id: any){
+    this.problemService.delete(id).then(res => {
+      console.log(res);
+      this.getProblems();
+    });
+  }
+
   async editProblem(problem: any) {
     let createModal = await this.modalController.create({
       component: ProblemPage,

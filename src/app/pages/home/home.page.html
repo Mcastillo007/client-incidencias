@@ -4,18 +4,39 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="card-background-page" >
+  <h1>Tasa y Cantidad de respuestas</h1>
   <div>
-    <canvas baseChart width="400" height="400"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [colors]="lineChartColors"
-                [legend]="lineChartLegend"
-                [chartType]="lineChartType"
-                [plugins]="lineChartPlugins"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+      <button mat-button mat-raised-button color="primary" (click)="randomize()">Actualizar</button>
     </div>
+  </div>
+  <h1>Problemas activos y cerrados</h1>
+  <div>
+    <div>
+      <div class="chart">
+        <canvas baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [colors]="pieChartColors"
+          [legend]="pieChartLegend">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
   <ion-grid>
     <ion-row>
       
@@ -38,6 +59,7 @@
       
     </ion-row>
   </ion-grid>
+
 </ion-content>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -45,3 +67,5 @@
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
+
+
